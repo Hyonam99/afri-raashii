@@ -1,10 +1,16 @@
+import Footer from "@components/footer/Footer";
+import NavigationBar from "@components/nav-bar";
 import { Outlet } from "react-router-dom";
 
 const AppLayout = () => {
 	return (
-		<main className="max-w-[90dvw] mx-auto">
-			<Outlet />
-		</main>
+		<>
+			<NavigationBar />
+			<main className="min-h-[calc(100dvh-102px)]">
+				<Outlet />
+			</main>
+			<Footer />
+		</>
 	);
 };
 

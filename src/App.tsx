@@ -1,7 +1,15 @@
+import Banner from "@components/home/Banner";
+import Featured from "@components/home/Featured";
+import MiniProducts from "@components/home/MiniProducts";
+
 const App = () => {
 	return (
 		<div>
-			<h1 className="text-center text-3xl">Welcome to Afri-Raashii</h1>
+			<Banner />
+			<div className="max-w-[90dvw] mx-auto mt-[100dvh]">
+				<Featured />
+				<MiniProducts />
+			</div>
 		</div>
 	);
 }
