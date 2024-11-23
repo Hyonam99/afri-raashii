@@ -6,7 +6,7 @@ const MiniProducts = () => {
 		<div className="mb-8 md:mb-16">
 			<SectionBadge text="More Products" textColor="text-mustard-orange" />
 
-			<div className="grid grid-cols-4 gap-7 [&>div]:h-[400px] mt-5">
+			<div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 sm:gap-7 sm:[&>div]:h-[400px] mt-5">
 				<ProductCard
 					imageUrl="/static-images/shrubs-2.jpg"
 					productName="Protein"

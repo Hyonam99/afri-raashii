@@ -4,7 +4,6 @@ export interface ProductCardProps {
 	productName: string;
 	price: number;
 	category: string;
-	// onLoadComplete: () => void;
 }
 
 const ProductCard = (props: ProductCardProps) => {

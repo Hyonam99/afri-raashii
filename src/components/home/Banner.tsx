@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 const Banner = () => {
 	const videos = [
 		"/static-videos/pepper.mp4",
-		"/static-videos/pear.mp4",
 		"/static-videos/lemons.mp4",
 		"/static-videos/fruits.mp4",
 		"/static-videos/grocery-payment.mp4",
@@ -45,13 +44,13 @@ const Banner = () => {
 				autoPlay
 			></video>
 
-			<div className="absolute text-center">
-				<h1 className="relative text-5xl mb-4 text-white font-bold">
+			<div className="absolute text-center px-2">
+				<h1 className="relative text-4xl md:text-5xl mb-4 text-white font-bold">
 					Your African Grocery Haven!
 				</h1>
-				<p className="text-2xl font-semibold mb-2">
+				<p className="text-xl md:text-2xl font-semibold mb-2">
 					Shop <span className="text-mustard-orange-light">Fresh.</span> Cook{" "}
-					<span className="text-mustard-orange-light">Authentic.</span> Live{" "}
+					<span className="text-mustard-orange-light">Authentic.<br className="md:hidden"/></span> Live{" "}
 					<span className="text-mustard-orange-light">Flavorfully.</span>
 				</p>
 				<p>Let us bring Africa closer to you—one ingredient at a time.</p>

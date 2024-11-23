@@ -4,9 +4,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.tsx";
 import AppLayout from "@layouts/AppLayout.tsx";
+import AdminLayout from "@layouts/AdminLayout.tsx";
+
 import CartPage from "@pages/CartPage.tsx";
 import ProductsPage from "@pages/ProductsPage.tsx";
 import PageNotFound from "@pages/PageNotFound.tsx";
+import AdminPage from "@pages/AdminPage.tsx";
 
 import "./index.css";
 
@@ -27,6 +30,21 @@ const router = createBrowserRouter([
 			{
 				path: "products",
 				element: <ProductsPage />,
+			},
+			{
+				path: "admin",
+				element: <ProductsPage />,
+			},
+		],
+	},
+	{
+		path: "/admin",
+		element: <AdminLayout />,
+		errorElement: <PageNotFound />,
+		children: [
+			{
+				index: true,
+				element: <AdminPage />,
 			},
 		],
 	},

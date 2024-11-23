@@ -12,13 +12,13 @@ const SideNav = (props: SideNavProps) => {
 
 	return (
 		<section
-			className={`fixed top-0 left-0 h-full w-full transform ${
+			className={`fixed top-0 left-0 h-[100vh] w-full transform ${
 				isOpen ? "translate-x-0" : "-translate-x-full"
 			} transition-transform duration-300`}
 		>
 			<div
 				className={
-					"relative z-10 h-full w-11/12 sm:w-3/5 p-7 bg-gray-800 text-white flex flex-col items-start gap-5"
+					"relative z-10 h-[100vh] w-11/12 sm:w-3/5 p-7 bg-gray-800 text-white flex flex-col items-start gap-5"
 				}
 				onClick={onClose}
 			>
