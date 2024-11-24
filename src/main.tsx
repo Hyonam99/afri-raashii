@@ -12,6 +12,7 @@ import PageNotFound from "@pages/PageNotFound.tsx";
 import AdminPage from "@pages/AdminPage.tsx";
 
 import "./index.css";
+import AppProvider from "@providers/AppProvider.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -52,6 +53,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<RouterProvider router={router} />
+		<AppProvider>
+			<RouterProvider router={router} />
+		</AppProvider>
 	</StrictMode>
 );

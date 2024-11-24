@@ -29,23 +29,24 @@ const Featured = () => {
 				</span>
 				<div className="grid grid-cols-[repeat(3,1fr)] gap-7 justify-between w-full overflow-x-scroll [&>div]:w-[280px] sm:[&>div]:w-[300px]">
 					<ProductCard
-						imageUrl="/static-images/shrubs-2.jpg"
-						productName="Protein"
+						productImage="/static-images/shrubs-2.jpg"
+						name="Protein"
 						price={200}
 						category="Grain"
 					/>
 					<ProductCard
-						imageUrl="/static-images/shrubs-2.jpg"
-						productName="Wheat"
+						productImage="/static-images/shrubs-2.jpg"
+						name="Protein"
 						price={200}
 						category="Grain"
 					/>
 					<ProductCard
-						imageUrl="/static-images/shrubs-2.jpg"
-						productName="Wheat"
+						productImage="/static-images/shrubs-2.jpg"
+						name="Protein"
 						price={200}
 						category="Grain"
 					/>
+					
 				</div>
 			</div>
 		</section>

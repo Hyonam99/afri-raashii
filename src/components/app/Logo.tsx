@@ -5,7 +5,7 @@ const Logo = () => {
 		<Link to={"/"} className="flex items-center gap-2">
 			<img
 				src={"/static-images/logo.png"}
-				className="w-[60px] h-[40px]"
+				className="w-[40px] h-[40px]"
 				alt="afri-raashii"
 			/>
 			<div className="flex flex-col">
