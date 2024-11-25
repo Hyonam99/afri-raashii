@@ -19,16 +19,14 @@ const Modal = (props: ModalProps) => {
 			onClick={onClose}
 		>
 			<div
-				className="relative w-full max-w-md max-h-96 p-4 bg-white rounded-lg shadow-md overflow-y-scroll"
+				className="relative w-full max-w-md max-h-96 p-4 bg-white rounded-lg shadow-md overflow-y-scroll modal-scroll"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex items-center justify-between mb-3">
 					{title && (
-						<h2 className="text-lg font-semibold text-gray-800">
-							{title}
-						</h2>
-                    )}
-                    
+						<h2 className="text-lg font-semibold text-gray-800">{title}</h2>
+					)}
+
 					<button
 						className="text-gray-600 hover:text-gray-900"
 						onClick={onClose}

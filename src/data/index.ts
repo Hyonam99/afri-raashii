@@ -39,4 +39,4 @@ export const productCategories = [
 	{ id: 11, categoryName: "Health Foods" },
 	{ id: 12, categoryName: "Roots and Shrubs" },
 ];
-;
+

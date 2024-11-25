@@ -1,4 +1,5 @@
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import Loader from "./Loader";
 
 const PayPalCard = ({ payableAmount }: { payableAmount: string }) => {
 	const [{ isPending, isRejected }] = usePayPalScriptReducer();
@@ -6,7 +7,9 @@ const PayPalCard = ({ payableAmount }: { payableAmount: string }) => {
 	return (
 		<>
 			{isPending ? (
-				<p className="text-black">Loading Paypal Payment</p>
+				<p className="text-black">
+					<Loader text="Loading Paypal Payment" />
+				</p>
 			) : (
 				<PayPalButtons
 					createOrder={(_, actions) => {

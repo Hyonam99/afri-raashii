@@ -2,6 +2,7 @@ import SectionBadge from "@components/app/SectionBadge";
 import ProductCard from "@components/products/ProductCard";
 import { useGetAllProducts } from "@api/hooks";
 import { ProductType } from "types/index";
+import Loader from "@components/app/Loader";
 
 const MiniProducts = () => {
 	const { data, isError, isLoading } = useGetAllProducts();
@@ -10,11 +11,13 @@ const MiniProducts = () => {
 		<div className="mb-8 md:mb-16">
 			<SectionBadge text="More Products" textColor="text-mustard-orange" />
 
-			<div>
+			<div className="p-3">
 				{isLoading ? (
-					<p>Loading...</p>
+					<Loader text="Loading products" />
 				) : isError ? (
-					<p>Error loading products</p>
+					<p className="text-center text-red-500 font-semibold text-lg">
+						An error occured while loading products
+					</p>
 				) : null}
 			</div>
 

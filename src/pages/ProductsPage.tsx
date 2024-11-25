@@ -1,4 +1,5 @@
 import { useGetAllProducts } from "@api/hooks";
+import Loader from "@components/app/Loader";
 import SectionBadge from "@components/app/SectionBadge";
 import ProductBanner from "@components/products/Banner";
 import ProductCard from "@components/products/ProductCard";
@@ -6,18 +7,20 @@ import { ProductType } from "types/index";
 
 const ProductsPage = () => {
 	const { data, isError, isLoading } = useGetAllProducts();
-	
+
 	return (
 		<section className="max-w-[90dvw] mx-auto">
 			<ProductBanner />
 
 			<SectionBadge text="Shop Products" textColor="text-mustard-orange" />
 
-			<div>
+			<div className="p-3">
 				{isLoading ? (
-					<p>Loading...</p>
+					<Loader text="Loading products" />
 				) : isError ? (
-					<p>Error loading products</p>
+					<p className="text-center text-red-500 font-semibold text-lg">
+						An error occured while loading products
+					</p>
 				) : null}
 			</div>
 

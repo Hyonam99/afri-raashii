@@ -7,6 +7,7 @@ import CreateProductForm from "@components/products/CreateProduct";
 import ProductCard from "@components/products/ProductCard";
 
 import { ProductType } from "types/index";
+import Loader from "@components/app/Loader";
 
 const AdminPage = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -31,11 +32,13 @@ const AdminPage = () => {
 				</button>
 			</div>
 
-			<div>
+			<div className="p-3">
 				{isLoading ? (
-					<p>Loading...</p>
+					<Loader text="Loading products" />
 				) : isError ? (
-					<p>Error loading products</p>
+					<p className="text-center text-red-500 font-semibold text-lg">
+						An error occured while loading products
+					</p>
 				) : null}
 			</div>
 

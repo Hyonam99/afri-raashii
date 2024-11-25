@@ -101,7 +101,7 @@ const ProductCard = (props: ProductType) => {
 				</div>
 			</div>
 
-			{currentUser?.role === "USER" && (
+			{currentUser?.role !== "ADMIN" && (
 				<button
 					type="button"
 					className="w-full flex items-center justify-between gap-2 border border-white border-solid px-7 py-3 text-xs font-normal"
