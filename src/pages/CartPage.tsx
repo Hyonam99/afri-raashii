@@ -1,9 +1,18 @@
+import Modal from "@components/app/Modal";
+import PayPalCard from "@components/app/PaypalCard";
 import CartItem, { CartItemMobile } from "@components/cart/CartRow";
 import { useCart } from "@context/cart/CartContext";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Cartpage = () => {
 	const { state } = useCart();
+	const [showModal, setShowModal] = useState(false)
+
+	const handleCheckout = () => {setShowModal(true)}
+	const handleCloseModal = () => {
+		setShowModal(false);
+	};
 
 	const tableHeaders = [
 		"Product",
@@ -34,12 +43,14 @@ const Cartpage = () => {
 
 					<div className="mb-20">
 						<table className="hidden md:table w-full text-left">
-							<thead className="[&>th]:font-light [&>th]:text-sm [&>th]:text-white [&>th:nth-child(6)]:text-right border-b border-mustard-orange border-solid mb-4">
-								{tableHeaders.map((header) => (
-									<th key={header}>
-										<p className="mb-5">{header}</p>
-									</th>
-								))}
+							<thead className="[&>th]:font-light [&>tr>th]:text-sm [&>tr>th]:text-white [&>tr>th:nth-child(6)]:text-right border-b border-mustard-orange border-solid mb-4">
+								<tr>
+									{tableHeaders.map((header) => (
+										<th key={header}>
+											<p className="mb-5">{header}</p>
+										</th>
+									))}
+								</tr>
 							</thead>
 
 							<tbody>
@@ -73,7 +84,7 @@ const Cartpage = () => {
 						<button
 							type="button"
 							className="bg-mustard-orange text-white rounded-md text-sm md:text-lg px-7 py-3"
-							onClick={() => {}}
+							onClick={handleCheckout}
 						>
 							Complete Order
 						</button>
@@ -87,6 +98,10 @@ const Cartpage = () => {
 					</Link>
 				</div>
 			)}
+
+			<Modal isOpen={showModal} onClose={handleCloseModal} title="Checkout">
+				<PayPalCard payableAmount={totalCost.toLocaleString()} />
+			</Modal>
 		</section>
 	);
 };

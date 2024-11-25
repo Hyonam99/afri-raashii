@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { DefaultOptions, QueryCache, QueryClient } from "@tanstack/react-query";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 import { isAxiosError } from "axios";
 import { CartProvider } from "src/context/cart/CartContext";
 import { AuthProvider } from "src/context/auth/AuthContext";
@@ -24,12 +26,20 @@ export const queryClient = new QueryClient({
 });
 
 const AppProvider = ({ children }: { children: ReactNode }) => {
-	
+	const initialOptions = {
+		clientId:
+			"AYJk9-HijFOrRdPp8D63FkFqnO_WhPFrYwnfOkcdvSGFe3Elar3mvzN1revfBLLkEI12PwC0E1htcAmj",
+		currency: "USD",
+		intent: "capture"
+	};
+
 	return (
 		<AuthProvider>
 			<CartProvider>
 				<QueryClientProvider client={queryClient}>
-					{children}
+					<PayPalScriptProvider options={initialOptions}>
+						{children}
+					</PayPalScriptProvider>
 				</QueryClientProvider>
 			</CartProvider>
 		</AuthProvider>

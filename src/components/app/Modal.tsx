@@ -18,7 +18,7 @@ const Modal = (props: ModalProps) => {
 			onClick={onClose}
 		>
 			<div
-				className="relative w-full max-w-md p-4 bg-white rounded-lg shadow-md"
+				className="relative w-full max-w-md max-h-96 p-4 bg-white rounded-lg shadow-md overflow-y-scroll"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex items-center justify-between mb-3">
