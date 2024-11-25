@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { MutationOptionsType, ProductType } from "types/index";
 import { AxiosError } from "axios";
+import { MutationOptionsType, ProductType } from "types/index";
 import {
 	createProduct,
 	getProducts,

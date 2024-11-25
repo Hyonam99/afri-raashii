@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 
+import CreateProductForm from "./CreateProduct";
 import Modal from "@components/app/Modal";
 import AlertBar, { AlertBarStatusType } from "@components/app/Alertbar";
-import CreateProductForm from "./CreateProduct";
+
 import { APIStatusType, ProductType } from "types/index";
 import { useDeleteProduct } from "@api/hooks";
-import { currencyNumberFormat } from "@utils/helpers";
+import { currencyNumberFormat } from "@utils/index";
+
 import { useCart } from "@context/cart/CartContext";
 import { useAuth } from "@context/auth/AuthContext";
 

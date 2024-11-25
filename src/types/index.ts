@@ -7,10 +7,6 @@ export type ProductType = {
     productImage: string
 }
 
-export interface CartItemType extends ProductType {
-	quantity: number;
-}
-
 export type UserType = {
 	name: string;
 	email: string;
@@ -25,3 +21,10 @@ export type MutationOptionsType = {
 };
 
 export type APIStatusType = { status: string; message: string };
+
+
+//Interfaces
+
+export interface CartItemType extends ProductType {
+	quantity: number;
+}

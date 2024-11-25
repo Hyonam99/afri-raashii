@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { APIStatusType, UserType } from "types/index";
 import { useLogin } from "@hooks/index";
 import AlertBar, { AlertBarStatusType } from "@components/app/Alertbar";
+import { APIStatusType, UserType } from "types/index";
 
 const LoginPage = () => {
 	const [formValues, setFormValues] = useState<UserType>({

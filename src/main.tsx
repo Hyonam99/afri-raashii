@@ -3,17 +3,17 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.tsx";
-import AppLayout from "@layouts/AppLayout.tsx";
-import AdminLayout from "@layouts/AdminLayout.tsx";
-
 import CartPage from "@pages/CartPage.tsx";
 import ProductsPage from "@pages/ProductsPage.tsx";
 import PageNotFound from "@pages/PageNotFound.tsx";
 import AdminPage from "@pages/AdminPage.tsx";
+import LoginPage from "@pages/auth/LoginPage.tsx";
+
+import AppLayout from "@layouts/AppLayout.tsx";
+import AdminLayout from "@layouts/AdminLayout.tsx";
+import AppProvider from "@providers/AppProvider.tsx";
 
 import "./index.css";
-import AppProvider from "@providers/AppProvider.tsx";
-import LoginPage from "@pages/auth/LoginPage.tsx";
 
 const router = createBrowserRouter([
 	{

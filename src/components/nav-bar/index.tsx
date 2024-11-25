@@ -1,15 +1,17 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { IoIosMenu } from "react-icons/io";
-import Logo from "@components/app/Logo";
-import SideNav from "@components/app/SideNav";
 import { TiShoppingCart } from "react-icons/ti";
 import { HiOutlineUserCircle } from "react-icons/hi2";
-import { useState } from "react";
+
+import Logo from "@components/app/Logo";
+import SideNav from "@components/app/SideNav";
 import NotificationHeader from "@components/app/NotificationHeader";
+import AlertBar, { AlertBarStatusType } from "@components/app/Alertbar";
+
 import { useAuth } from "@context/auth/AuthContext";
 import { useLogOut } from "@hooks/index";
 import { APIStatusType } from "types/index";
-import AlertBar, { AlertBarStatusType } from "@components/app/Alertbar";
 
 const NavigationBar = () => {
 	const { currentUser } = useAuth()

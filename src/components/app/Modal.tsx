@@ -10,6 +10,7 @@ interface ModalProps {
 
 const Modal = (props: ModalProps) => {
 	const { isOpen, onClose, children, title } = props;
+	
 	if (!isOpen) return null;
 
 	return (

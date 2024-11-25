@@ -16,8 +16,6 @@ interface AlertBarProps {
 	onCloseComplete: () => void
 }
 
-
-
 export const AlertBar = (props: AlertBarProps) => {
 	const { message, status, isOpen, onCloseComplete } = props;
 	useEffect(() => {

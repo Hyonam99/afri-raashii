@@ -1,6 +1,6 @@
-import { useAuth } from "@context/auth/AuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@context/auth/AuthContext";
 import { MutationOptionsType, UserType } from "types/index";
 
 export const useLogin = (options: MutationOptionsType) => {

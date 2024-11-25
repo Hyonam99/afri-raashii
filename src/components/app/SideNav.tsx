@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
+
 import Logo from "./Logo";
+import AlertBar, { AlertBarStatusType } from "./Alertbar";
 import { useAuth } from "@context/auth/AuthContext";
 import { useLogOut } from "@hooks/index";
-import { useState } from "react";
 import { APIStatusType } from "types/index";
-import AlertBar, { AlertBarStatusType } from "./Alertbar";
 
 interface SideNavProps {
 	isOpen: boolean;

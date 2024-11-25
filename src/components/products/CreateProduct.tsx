@@ -1,8 +1,8 @@
-import { useCreateProduct, useUpdateProduct } from "@api/hooks";
-import AlertBar, { AlertBarStatusType } from "@components/app/Alertbar";
 import { useState } from "react";
-import { productCategories } from "src/data";
+import AlertBar, { AlertBarStatusType } from "@components/app/Alertbar";
+import { useCreateProduct, useUpdateProduct } from "@api/hooks";
 import { APIStatusType, ProductType } from "types/index";
+import { productCategories } from "src/data";
 
 const CreateProductForm = ({
 	initialData,

@@ -1,6 +1,6 @@
-import { useGetAllProducts } from "@api/hooks";
 import SectionBadge from "@components/app/SectionBadge";
 import ProductCard from "@components/products/ProductCard";
+import { useGetAllProducts } from "@api/hooks";
 import { ProductType } from "types/index";
 
 const MiniProducts = () => {
