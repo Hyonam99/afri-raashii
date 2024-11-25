@@ -13,6 +13,7 @@ import AdminPage from "@pages/AdminPage.tsx";
 
 import "./index.css";
 import AppProvider from "@providers/AppProvider.tsx";
+import LoginPage from "@pages/auth/LoginPage.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element: <App />,
+			},
+			{
+				path: "login",
+				element: <LoginPage />,
 			},
 			{
 				path: "cart",

@@ -1,6 +1,8 @@
 import { UserType } from "types/index";
 
-export type UserAction = { type: "LOGIN"; payload: UserType } | { type: "LOGOUT" };
+export type UserAction =
+	| { type: "LOGIN"; payload: UserType }
+	| { type: "LOGOUT" };
 
 const AuthReducer = (state: any, action: UserAction) => {
 	switch (action.type) {

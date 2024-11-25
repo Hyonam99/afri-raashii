@@ -8,10 +8,12 @@ import { APIStatusType, ProductType } from "types/index";
 import { useDeleteProduct } from "@api/hooks";
 import { currencyNumberFormat } from "@utils/helpers";
 import { useCart } from "@context/cart/CartContext";
+import { useAuth } from "@context/auth/AuthContext";
 
 const ProductCard = (props: ProductType) => {
 	const { productImage, name, price, category, id } = props;
 	const { dispatch } = useCart();
+	const { currentUser } = useAuth();
 
 	const [isOpen, setIsOpen] = useState(false);
 	const [isDelete, setIsDelete] = useState(false);
@@ -97,31 +99,35 @@ const ProductCard = (props: ProductType) => {
 				</div>
 			</div>
 
-			<button
-				type="button"
-				className="w-full flex items-center justify-between gap-2 border border-white border-solid px-7 py-3 text-xs font-normal"
-				onClick={addToCart}
-			>
-				ADD TO CART <FaPlus size={18} />
-			</button>
-
-			<div className="flex items-center justify-between">
+			{currentUser?.role === "USER" && (
 				<button
 					type="button"
 					className="w-full flex items-center justify-between gap-2 border border-white border-solid px-7 py-3 text-xs font-normal"
-					onClick={openEditModal}
+					onClick={addToCart}
 				>
-					Edit
+					ADD TO CART <FaPlus size={18} />
 				</button>
+			)}
 
-				<button
-					type="button"
-					className="w-full flex items-center justify-between gap-2 border border-white border-solid px-7 py-3 text-xs text-red-700 font-normal"
-					onClick={openDeleteModal}
-				>
-					Delete
-				</button>
-			</div>
+			{currentUser?.role === "ADMIN" && (
+				<div className="flex items-center justify-between">
+					<button
+						type="button"
+						className="w-full flex items-center justify-between gap-2 border border-white border-solid px-7 py-3 text-xs font-normal"
+						onClick={openEditModal}
+					>
+						Edit
+					</button>
+
+					<button
+						type="button"
+						className="w-full flex items-center justify-between gap-2 border border-white border-solid px-7 py-3 text-xs text-red-700 font-normal"
+						onClick={openDeleteModal}
+					>
+						Delete
+					</button>
+				</div>
+			)}
 
 			<Modal isOpen={isOpen} onClose={closeEditModal} title="Edit product">
 				<CreateProductForm

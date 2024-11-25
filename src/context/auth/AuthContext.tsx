@@ -51,10 +51,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 	);
 };
 
-export const useAuthData = () => {
+export const useAuth = () => {
 	const context = useContext(AuthContext);
 	if (!context) {
-		throw new Error("useAuthData must be used within a AuthContextProvider");
+		throw new Error("useAuth must be used within a AuthContextProvider");
 	}
 	return context;
 };

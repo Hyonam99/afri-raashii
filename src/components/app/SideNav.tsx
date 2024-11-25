@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 import Logo from "./Logo";
+import { useAuth } from "@context/auth/AuthContext";
+import { useLogOut } from "@hooks/index";
+import { useState } from "react";
+import { APIStatusType } from "types/index";
+import AlertBar, { AlertBarStatusType } from "./Alertbar";
 
 interface SideNavProps {
 	isOpen: boolean;
@@ -9,6 +14,23 @@ interface SideNavProps {
 
 const SideNav = (props: SideNavProps) => {
 	const { isOpen, onClose } = props;
+	const { currentUser } = useAuth();
+	const [apiStatus, setApiStatus] = useState<APIStatusType | undefined>();
+
+	const { logoutUser } = useLogOut({
+		onSuccess: (data) => {
+			setApiStatus({
+				status: "success",
+				message: data,
+			});
+		},
+		onError: () => {
+			setApiStatus({
+				status: "success",
+				message: "Unable to logout",
+			});
+		},
+	});
 
 	return (
 		<section
@@ -16,6 +38,16 @@ const SideNav = (props: SideNavProps) => {
 				isOpen ? "translate-x-0" : "-translate-x-full"
 			} transition-transform duration-300`}
 		>
+			{apiStatus !== undefined && (
+				<AlertBar
+					isOpen={apiStatus !== undefined}
+					status={apiStatus?.status as AlertBarStatusType}
+					message={apiStatus?.message || ""}
+					onCloseComplete={() => {
+						setApiStatus(undefined);
+					}}
+				/>
+			)}
 			<div
 				className={
 					"relative z-10 h-[100vh] w-11/12 sm:w-3/5 p-7 bg-gray-800 text-white flex flex-col items-start gap-5"
@@ -44,6 +76,15 @@ const SideNav = (props: SideNavProps) => {
 				>
 					Cart
 				</NavLink>
+
+				{currentUser && (
+					<button
+						onClick={logoutUser}
+						className="flex items-center gap-2 text-red-500"
+					>
+						Logout
+					</button>
+				)}
 			</div>
 
 			{isOpen && (
