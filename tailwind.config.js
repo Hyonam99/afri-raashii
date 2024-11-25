@@ -3,6 +3,9 @@ export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
+			screens: {
+				xs: "498px",
+			},
 			colors: {
 				"mustard-orange": "#a35f1a",
 				"mustard-orange-light": "#e29950",

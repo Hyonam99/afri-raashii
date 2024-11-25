@@ -1,12 +1,94 @@
-import { Link } from "react-router-dom"
+import CartItem, { CartItemMobile } from "@components/cart/CartRow";
+import { useCart } from "@context/cart/CartContext";
+import { Link } from "react-router-dom";
 
-const CartPage = () => {
-  return (
-    <div className="max-w-[90dvw] mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-4">Empty Cart</h1>
-      <Link to={'/products'} className="block text-center underline">Continue Shopping</Link>
-    </div>
-  )
-}
+const Cartpage = () => {
+	const { state } = useCart();
 
-export default CartPage
+	const tableHeaders = [
+		"Product",
+		"Product Name",
+		"Price",
+		"Quantity",
+		" ",
+		"Total",
+	];
+
+	const totalCost = state.cart.reduce((accumulator, currentItem) => {
+		const price = currentItem.price;
+		return accumulator + price * currentItem.quantity;
+	}, 0);
+
+	return (
+		<section className="max-w-[90dvw] mx-auto">
+			{state.cart.length > 0 ? (
+				<div>
+					<h1 className="text-center text-3xl md:text-5xl leading-[44px] mb-3">
+						Cart
+					</h1>
+
+					<p className="text-center mb-10 text-sm">
+						{state.cart.length} {state.cart.length > 1 ? "items" : "item"} in
+						cart
+					</p>
+
+					<div className="mb-20">
+						<table className="hidden md:table w-full text-left">
+							<thead className="[&>th]:font-light [&>th]:text-sm [&>th]:text-white [&>th:nth-child(6)]:text-right border-b border-mustard-orange border-solid mb-4">
+								{tableHeaders.map((header) => (
+									<th key={header}>
+										<p className="mb-5">{header}</p>
+									</th>
+								))}
+							</thead>
+
+							<tbody>
+								{state.cart.map((item, i: number) => (
+									<CartItem
+										key={`product-${item.id}-key-${i + 1}`}
+										productData={item}
+									/>
+								))}
+							</tbody>
+						</table>
+
+						<div className="mt-5 block md:hidden">
+							{state.cart.map((item, i: number) => (
+								<CartItemMobile
+									key={`product-mobile-${item.id}-key-${i + 1}`}
+									productData={item}
+								/>
+							))}
+						</div>
+
+						<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between justify-start items-start sm:gap-0 gap-2 mb-8">
+							<p className="w-full text-2xl text-left font-light">TOTAL</p>
+							<div className="flex items-center gap-1">
+								<h4 className="w-full text-xl sm:text-3xl sm:text-right text-left font-bold">
+									${totalCost.toLocaleString()}
+								</h4>
+							</div>
+						</div>
+
+						<button
+							type="button"
+							className="bg-mustard-orange text-white rounded-md text-sm md:text-lg px-7 py-3"
+							onClick={() => {}}
+						>
+							Complete Order
+						</button>
+					</div>
+				</div>
+			) : (
+				<div className="flex flex-col items-center justify-center gap-3 min-h-[calc(100dvh-202px)]">
+					<h3 className="font-semibold text-2xl">Your Cart is empty</h3>
+					<Link to={"/products"} className="underline">
+						Continue Shopping
+					</Link>
+				</div>
+			)}
+		</section>
+	);
+};
+
+export default Cartpage;

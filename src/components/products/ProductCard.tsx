@@ -7,9 +7,12 @@ import CreateProductForm from "./CreateProduct";
 import { APIStatusType, ProductType } from "types/index";
 import { useDeleteProduct } from "@api/hooks";
 import { currencyNumberFormat } from "@utils/helpers";
+import { useCart } from "@context/cart/CartContext";
 
 const ProductCard = (props: ProductType) => {
 	const { productImage, name, price, category, id } = props;
+	const { dispatch } = useCart();
+
 	const [isOpen, setIsOpen] = useState(false);
 	const [isDelete, setIsDelete] = useState(false);
 	const [apiStatus, setApiStatus] = useState<APIStatusType | undefined>();
@@ -17,6 +20,7 @@ const ProductCard = (props: ProductType) => {
 	const openEditModal = () => {
 		setIsOpen(true);
 	};
+
 	const closeEditModal = () => {
 		setIsOpen(false);
 	};
@@ -26,6 +30,16 @@ const ProductCard = (props: ProductType) => {
 	};
 	const closeDeleteModal = () => {
 		setIsDelete(false);
+	};
+
+	const addToCart = () => {
+		dispatch({
+			type: "ADD_TO_CART",
+			payload: {
+				...props,
+				quantity: 1,
+			},
+		});
 	};
 
 	const { deleteProduct, isLoading } = useDeleteProduct({
@@ -86,6 +100,7 @@ const ProductCard = (props: ProductType) => {
 			<button
 				type="button"
 				className="w-full flex items-center justify-between gap-2 border border-white border-solid px-7 py-3 text-xs font-normal"
+				onClick={addToCart}
 			>
 				ADD TO CART <FaPlus size={18} />
 			</button>
