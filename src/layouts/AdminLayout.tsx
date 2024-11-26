@@ -1,5 +1,6 @@
+import NavigationBar from "@components/nav-bar";
 import { useAuth } from "@context/auth/AuthContext";
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
 	const { currentUser } = useAuth();
@@ -16,16 +17,10 @@ const AdminLayout = () => {
 		<>
 			{currentUser && currentUser.role == "ADMIN" && (
 				<>
-					<nav className="w-full h-[100px] p-11 flex items-center justify-start gap-7 border-b-[2px] border-mustard-orange mb-10">
-						<Link to="/">
-							<img
-								className="w-[50px] h-auto"
-								src="/static-images/logo.png"
-								alt="Logo"
-							/>
-						</Link>
+					<NavigationBar />
+					<header className="w-full h-[80px] py-2 px-12 flex items-center justify-start gap-7 border-b-[2px] border-mustard-orange mb-10">
 						<h3 className="font-light text-2xl capitalize">Dashboard</h3>
-					</nav>
+					</header>
 					<main className="min-h-[calc(100dvh-102px)] max-w-[90dvw] mx-auto">
 						<Outlet />
 					</main>

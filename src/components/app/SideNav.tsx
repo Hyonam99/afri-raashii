@@ -65,18 +65,33 @@ const SideNav = (props: SideNavProps) => {
 				>
 					Home
 				</NavLink>
-				<NavLink
-					to={"products"}
-					className={({ isActive }) => (isActive ? "active" : "")}
-				>
-					Products
-				</NavLink>
-				<NavLink
-					to={"cart"}
-					className={({ isActive }) => (isActive ? "active" : "")}
-				>
-					Cart
-				</NavLink>
+
+				{currentUser?.role !== "ADMIN" && (
+					<>
+						<NavLink
+							to={"/products"}
+							className={({ isActive }) => (isActive ? "active" : "")}
+						>
+							Products
+						</NavLink>
+
+						<NavLink
+							to={"/cart"}
+							className={({ isActive }) => (isActive ? "active" : "")}
+						>
+							Cart
+						</NavLink>
+					</>
+				)}
+
+				{currentUser?.role === "ADMIN" && (
+					<NavLink
+						to={"/admin"}
+						className={({ isActive }) => (isActive ? "active" : "")}
+					>
+						Dashboard
+					</NavLink>
+				)}
 
 				{currentUser && (
 					<button

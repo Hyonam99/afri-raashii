@@ -83,17 +83,17 @@ const ProductCard = (props: ProductType) => {
 				<img
 					src={productImage}
 					alt="product image"
-					className="mb-2 relative w-full h-full object-cover object-center rounded-lg"
+					className="mb-2 relative w-full h-[280px] object-cover object-center rounded-lg"
 				/>
 				<div className="absolute text-white top-0 w-full h-full flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-					<p className="text-center">{name}</p>
+					<p className="text-center capitalize">{name}</p>
 				</div>
 			</div>
 
 			<small className="text-[#fbf7cb] italic text-xs mt-1">{category}</small>
 
 			<div className="flex items-center justify-between mb-[14px]">
-				<p className="w-3/5 text-base md:text-lg font-light text-nowrap whitespace-nowrap text-ellipsis overflow-hidden">
+				<p className="w-3/5 text-base md:text-lg font-light text-nowrap whitespace-nowrap text-ellipsis overflow-hidden capitalize">
 					{name}
 				</p>
 				<div className="bg-purple-accent text-lg text-center text-white font-bold px-5 py-1 w-fit rounded-full flex items-center m-0">

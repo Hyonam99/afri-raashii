@@ -71,24 +71,41 @@ const NavigationBar = () => {
 					>
 						Home
 					</NavLink>
-					<NavLink
-						to={"products"}
-						className={({ isActive }) => (isActive ? "active" : "")}
-					>
-						Products
-					</NavLink>
-					<NavLink
-						to={"cart"}
-						className={({ isActive }) => `relative ${isActive ? "active" : ""}`}
-					>
-						<TiShoppingCart size={22} />
-						{state.cart.length > 0 && (
-							<>
-								<span className="animate-ping absolute -top-1 -right-1 inline-flex h-1/2 w-1/2 rounded-full bg-mustard-orange-light opacity-75"></span>
-								<span className="absolute -top-1 -right-1 inline-flex rounded-full h-3 w-3 bg-mustard-orange-light"></span>
-							</>
-						)}
-					</NavLink>
+
+					{currentUser?.role !== "ADMIN" && (
+						<>
+							<NavLink
+								to={"products"}
+								className={({ isActive }) => (isActive ? "active" : "")}
+							>
+								Products
+							</NavLink>
+
+							<NavLink
+								to={"cart"}
+								className={({ isActive }) =>
+									`relative ${isActive ? "active" : ""}`
+								}
+							>
+								<TiShoppingCart size={22} />
+								{state.cart.length > 0 && (
+									<>
+										<span className="animate-ping absolute -top-1 -right-1 inline-flex h-1/2 w-1/2 rounded-full bg-mustard-orange-light opacity-75"></span>
+										<span className="absolute -top-1 -right-1 inline-flex rounded-full h-3 w-3 bg-mustard-orange-light"></span>
+									</>
+								)}
+							</NavLink>
+						</>
+					)}
+
+					{currentUser?.role === "ADMIN" && (
+						<NavLink
+							to={"/admin"}
+							className={({ isActive }) => (isActive ? "active" : "")}
+						>
+							Dashboard
+						</NavLink>
+					)}
 
 					{currentUser && (
 						<button onClick={logoutUser} className="flex items-center gap-2">

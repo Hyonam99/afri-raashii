@@ -14,6 +14,7 @@ import AdminLayout from "@layouts/AdminLayout.tsx";
 import AppProvider from "@providers/AppProvider.tsx";
 
 import "./index.css";
+import GuardLayout from "@layouts/GuardLayout.tsx";
 
 const router = createBrowserRouter([
 	{
@@ -31,7 +32,13 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "cart",
-				element: <CartPage />,
+				element: <GuardLayout />,
+				children: [
+					{
+						index: true,
+						element: <CartPage />,
+					},
+				],
 			},
 			{
 				path: "products",

@@ -5,7 +5,7 @@ import { LiaArrowLeftSolid, LiaArrowRightSolid } from "react-icons/lia";
 const Featured = () => {
 	return (
 		<section className="flex items-end gap-10 mb-8 md:mb-24">
-			<div className="w-4/12 hidden lg:block">
+			<div className="w-5/12 hidden lg:block">
 				<img
 					src="/static-images/featured-shrub.jpg"
 					className="rounded-md w-full h-full"
@@ -13,9 +13,9 @@ const Featured = () => {
 				/>
 			</div>
 
-			<div className="w-full lg:w-8/12 flex flex-col gap-2 h-full">
+			<div className="w-full lg:w-7/12 flex flex-col gap-2 h-full">
 				<SectionBadge text="Featured" textColor="text-mustard-orange" />
-				<h3 className="text-3xl md:text-5xl font-bold mb-4">Roots & Shrubs</h3>
+				<h3 className="text-3xl md:text-4xl font-bold mb-4">Roots & Shrubs</h3>
 				<p className="mb-10">
 					Discover the freshest and finest roots, handpicked for
 					your convenience. Shop our featured products and enjoy unbeatable

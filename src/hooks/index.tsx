@@ -4,8 +4,8 @@ import { useAuth } from "@context/auth/AuthContext";
 import { MutationOptionsType, UserType } from "types/index";
 
 export const useLogin = (options: MutationOptionsType) => {
-    const { dispatch } = useAuth();
-    const navigate = useNavigate();
+	const { dispatch } = useAuth();
+	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const onSuccess = () => {
@@ -23,7 +23,11 @@ export const useLogin = (options: MutationOptionsType) => {
 		setTimeout(() => {
 			setIsLoading(false);
 			onSuccess();
-			navigate("/");
+			if (values.email === "raashiadmin@gmail.com") {
+				navigate("/admin");
+			} else {
+				navigate("/");
+			}
 		}, 1000);
 	};
 
@@ -48,8 +52,8 @@ export const useLogOut = (options: MutationOptionsType) => {
 		});
 		setTimeout(() => {
 			setIsLoading(false);
-            onSuccess();
-            navigate("/");
+			onSuccess();
+			navigate("/");
 		}, 2000);
 	};
 

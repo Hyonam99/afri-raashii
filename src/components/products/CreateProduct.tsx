@@ -135,6 +135,7 @@ const CreateProductForm = ({
 						name="price"
 						id="price"
 						min={1}
+						step={0.01}
 						value={formValues.price}
 						placeholder="enter product price"
 						className="p-2 bg-white outline outline-1 outline-gray-700 text-gray-700 text-sm placeholder:text-gray-500 rounded-sm"

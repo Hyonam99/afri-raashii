@@ -1,6 +1,6 @@
 export const currencyNumberFormat = (num: number): string => {
 	const formatter = new Intl.NumberFormat("en-US", {
-		maximumFractionDigits: 1,
+		maximumFractionDigits: 2,
 	});
 
 	if (num >= 1_000_000_000_000) {
