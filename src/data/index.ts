@@ -37,6 +37,6 @@ export const productCategories = [
 	{ id: 9, categoryName: "Frozen Foods" },
 	{ id: 10, categoryName: "Bakery" },
 	{ id: 11, categoryName: "Health Foods" },
-	{ id: 12, categoryName: "Roots and Shrubs" },
+	{ id: 12, categoryName: "Roots & Shrubs" },
 ];
 

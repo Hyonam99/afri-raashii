@@ -67,12 +67,7 @@ npm run dev
 ## Usage
 
 1. Admin Create, Edit and Delete products
-- navigate to the login page (/login) and login with the admin credentials: 
-
-- email: raashiadmin@gmail.com
-- password: Afriadmin@123
-- name: Admin
-
+- navigate to the login page (/login) and login with the admin credentials sent via email.
 - navigate to the admin dashboard (/admin) and perform CRUD operations on products.
 - to add a product image, make sure it is an URL. Check the [Resources](#resources) section to see a list of free image resources.
 
@@ -84,10 +79,7 @@ npm run dev
 - navigate to the home page (/) or the products page (/products) and add items to cart
 - navigate to the cart page (/cart) and proceed to checkout by clicking on the "complete order" button
 - a modal opens up with two Paypal payment options, complete the payment using any of the options.
-- for testing purposes, you can use the following test credentials to login to a paypal account and make payment:
-
-- email: sb-bo6jj20908451@personal.example.com
-- password: 5{S=A?bE
+- for testing purposes, you can use the test credentials sent via email to login to a paypal account and make payment
 
 
 ## Deployment
@@ -101,8 +93,23 @@ npm run dev
 The Image URLS below are categorized based on the products categories available in the webapp.
 To create a new product choose an Image based on the product category.
 
+- **Snacks** 
+- Potato chips: https://res.cloudinary.com/maesan-product/image/upload/v1732623495/samples/food/potato-chips_xisbgi.jpg
+
+- Garanola Bars: https://res.cloudinary.com/maesan-product/image/upload/v1732623791/samples/food/garanola-bar_d9e6kx.jpg
+
+
+- **Vegetables** 
+- Carrots: https://res.cloudinary.com/maesan-product/image/upload/v1732622498/samples/food/carrots_b5ybtv.jpg
+
+- Spinach: https://res.cloudinary.com/maesan-product/image/upload/v1732624101/samples/food/spinach_k1cimu.jpg
+
+
 - **Roots and Shrubs** 
-- https://source.unsplash.com/1600x900/?electronics
+- Garlic bulbs: https://res.cloudinary.com/maesan-product/image/upload/v1732622314/samples/food/garlic-bulb_hlcfeo.jpg
+
+- Ginger roots: https://res.cloudinary.com/maesan-product/image/upload/v1732624611/samples/food/ginger_g6tkhf.jpg
+
 
 2. Sample Data to create products
 
