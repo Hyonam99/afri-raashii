@@ -6,14 +6,32 @@ import PayPalCard from "@components/app/PaypalCard";
 import CartItem, { CartItemMobile } from "@components/cart/CartRow";
 
 import { useCart } from "@context/cart/CartContext";
+import AlertBar, { AlertBarStatusType } from "@components/app/Alertbar";
+import { APIStatusType } from "types/index";
 
 const Cartpage = () => {
 	const { state } = useCart();
 	const [showModal, setShowModal] = useState(false)
+	const [apiStatus, setApiStatus] = useState<APIStatusType | undefined>();
 
 	const handleCheckout = () => {setShowModal(true)}
 	const handleCloseModal = () => {
 		setShowModal(false);
+	};
+
+	const handleSuccessfulTransaction = (response: string) => {
+		handleCloseModal();
+		setApiStatus({
+			status: "success",
+			message: response,
+		});
+	};
+	
+	const handlePaypalError = (response: string) => {
+		setApiStatus({
+			status: "error",
+			message: response,
+		});
 	};
 
 	const tableHeaders = [
@@ -32,6 +50,17 @@ const Cartpage = () => {
 
 	return (
 		<section className="max-w-[90dvw] mx-auto">
+			{apiStatus !== undefined && (
+				<AlertBar
+					isOpen={apiStatus !== undefined}
+					status={apiStatus?.status as AlertBarStatusType}
+					message={apiStatus?.message || ""}
+					timeOut={6000}
+					onCloseComplete={() => {
+						setApiStatus(undefined);
+					}}
+				/>
+			)}
 			{state.cart.length > 0 ? (
 				<div>
 					<h1 className="text-center text-3xl md:text-5xl leading-[44px] mb-3">
@@ -102,7 +131,13 @@ const Cartpage = () => {
 			)}
 
 			<Modal isOpen={showModal} onClose={handleCloseModal} title="Checkout">
-				<PayPalCard payableAmount={totalCost.toLocaleString()} />
+				<PayPalCard
+					payableAmount={totalCost.toLocaleString()}
+					onTransactionSuccessful={(response) =>
+						handleSuccessfulTransaction(response)
+					}
+					onError={handlePaypalError}
+				/>
 			</Modal>
 		</section>
 	);

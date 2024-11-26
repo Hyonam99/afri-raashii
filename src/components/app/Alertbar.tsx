@@ -13,16 +13,17 @@ interface AlertBarProps {
 	message: string;
 	status: AlertBarStatusType;
 	isOpen: boolean;
+	timeOut?: number
 	onCloseComplete: () => void
 }
 
 export const AlertBar = (props: AlertBarProps) => {
-	const { message, status, isOpen, onCloseComplete } = props;
+	const { message, status, isOpen, timeOut, onCloseComplete } = props;
 	useEffect(() => {
 		if (isOpen) {
 			const options: ToastOptions = {
 				position: "top-center",
-				autoClose: 4000,
+				autoClose: timeOut || 4000,
 				hideProgressBar: false,
 				closeOnClick: true,
 				pauseOnHover: true,
@@ -30,7 +31,7 @@ export const AlertBar = (props: AlertBarProps) => {
 				progress: undefined,
 				theme: "colored",
 				transition: Slide,
-				onClose: onCloseComplete
+				onClose: onCloseComplete,
 			};
 
 			switch (status) {
